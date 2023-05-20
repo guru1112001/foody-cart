@@ -1,0 +1,32 @@
+{% extends "acc_profile/base.html" %}
+
+{% block content %}
+<div class=" rows">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th style="text-align: center;" >Product</th>
+                    <th style="text-align: center;" >Price</th>
+                    <th style="text-align: center;" >Category</th>
+                    <th style="text-align: center;" >Image</th>
+                    <th style="text-align: center;" >Update</th>
+                    <th style="text-align: center;" >Remove</th>
+                </tr>
+                {% for product in products  %}
+                <tr>
+                    <td style="text-align: center;" >{{product.name}}</td>
+                    <td style="text-align: center;" >{{product.price}}</td>
+                    <td style="text-align: center;" >{{product.category}}</td>
+                    <td  style="text-align: center; max-width:20px; max-height:20px;"><img style="max-width:50%" src="{{product.ImageURL}}"></td>
+                    <td style="text-align: center;" ><a class="btn btn-sm btn-warning" href="{% url 'update_product' product.id%}">Update</a></td>
+                    <td style="text-align: center;" ><a class="btn btn-sm btn-danger" href="{% url 'delete_product' product.id %} ">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

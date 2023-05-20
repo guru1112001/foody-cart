@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+:root {
+  --primary: #ff4c29;
+}
+
+::selection {
+  background: #ff4c29;
+}
+.rows{
+  margin-right: -15px;
+  margin-left: 73px;
+}
+.tds .ths{
+  text-align: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  line-height: 1.5;
+  /* transition: all 0.3s ease-in-out; */
+  font-family: "Josefin Sans", Arial;
+}
+
+body {
+  background: #fff;
+}
+
+.circle::before {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  content: "";
+  position: absolute;
+
+} 
+
+.full {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+
+.full .right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.full .right ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.full .right  li {
+  list-style-type: none;
+  margin: 0 1rem;
+  /* cursor: pointer; */
+}
+.full .right  li a {
+  text-decoration: none;
+  color: black;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.full .right ul li a:hover {
+  color: #ff4c29;
+}
+
+.full .right .cart {
+  font-size: 30px;
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.full .left .logo span {
+  color: #ff4c29
+}
+.logo a{
+  text-decoration: none;
+  color: black;
+}
+.logo a:hover{
+  text-decoration: none;
+  color: black;
+  
+}
+.cart:hover{
+  color:#ff4c29
+
+}
+.color{
+    position: absolute;
+    font-family: Arial;
+    font-weight: 600;
+    top: 38px;
+    right: 31rem;
+    height: 20px;
+    border-radius: 10px;
+    line-height: 20px;
+    min-width: 13px;
+    font-size: 12px;
+    padding: 0px 7px;
+    color: #fff;
+    background: #000000;
+  
+}
+.full .right .card:hover {
+  color:#ff4c29;
+}
+
+.full .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full .left .toggle {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+  margin: 0 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns {
+  padding: 0.5rem 2rem;
+  outline: none;
+  border: none;
+  background: #fff;
+  color: #ff4c29;
+  margin: 0 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: #ff4c29 !important;
+  color: #fff !important;
+}
+
+.btn-secondary:hover {
+  background: #eee !important;
+  color: #ff4c29 !important;
+}
+
+.btns:hover {
+  background: #ff4c29;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
+
+
+@media (max-width: 999px) {
+ 
+
+  .full {
+    flex-direction: column;
+  }
+
+  .full .left {
+    margin-bottom: 1rem;
+  }
+
+  .full .right ul li a{
+    margin: 0 0.8rem;
+  }
+
+  .color {
+    top: 11rem;
+    right: 23rem;
+  }
+  
+  
+}
+/* footer  */
+
+.footer {
+  background: #272d36;
+  color: #b2b2b2;
+  padding: 30px 0;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer ul {
+  list-style: none;
+  line-height: 30px;
+  font-size: 16px;
+}
+
+.footer ul li {
+  cursor: pointer;
+}
+
+.footer-about {
+  width: 35%;
+}
+
+.copyright {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+  border-top: 1px solid #b2b2b2;
+}
+
+@media (max-width: 650px) {
+  .full .right {
+    display: none;
+  }
+
+  .full .left .toggle {
+    display: flex;
+    font-size: 40px;
+  }
+
+  .full .left {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  body.active .full .right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.active .full {
+    background: #fff;
+    transition: 0s;
+  }
+
+  body.active .full .right ul {
+    flex-direction: column;
+  }
+
+  body.active .full .right ul li a{
+    margin: 1rem 0;
+  }
+
+  body.active .full .right .cart {
+    margin: 1rem 0;
+  }
+  .color{
+    top: 20rem;
+    right: 16rem;
+  }
+
+  
+}
+/* footer end */

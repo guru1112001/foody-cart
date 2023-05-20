@@ -1,0 +1,20 @@
+{% extends "acc_profile/base.html" %}
+
+{% block content %}
+<div class="center-column">
+    <div class="card card-body">
+        <form enctype="multipart/form-data" action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                {{ field.label }}
+                {{ field }}
+
+            </div>
+            {% endfor %}
+            <hr>
+            <input class="btns btn-sm " type="submit" name="submit">
+        </form>
+    </div>
+</div>
+{% endblock %}

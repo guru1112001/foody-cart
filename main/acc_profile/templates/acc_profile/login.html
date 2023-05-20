@@ -1,0 +1,43 @@
+{% extends "acc_profile/base.html" %}
+
+{% load socialaccount %}
+
+{% block content %}
+<div class="can">
+
+    <div class="containers" id="containers">
+
+        <div class="form-containers sign-in-container">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <h1 class="h1">Sign in</h1>
+                <div class="social-containers">
+                    <a href="#" class="social a"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{% provider_login_url 'google'%}?next=/" class="social a"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social a"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span class="span">or use your account</span>
+                <input type="text" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <a class="a" href="{% url 'password_reset' %}">Forgot your password ?</a>
+                <a href="{% url 'admin:index' %}" class="a">trying to login as owner </a>
+
+                <button class="btn" type="submit">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+
+                <div class="overlay-panel overlay-right">
+                    <h1 class="h1">Hello, Friend!</h1>
+                    <p class="p">Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp"><a href="{% url 'register' %}">Sign Up</a></button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

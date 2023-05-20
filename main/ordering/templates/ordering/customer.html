@@ -1,0 +1,55 @@
+{% extends "acc_profile/base.html" %}
+
+{% block content %}
+<div class="rows">
+    <div class="col-md">
+       
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Contact Information</h5>
+            <hr>
+            <p>Email: {{customer.email}} </p>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total Orders</h5>
+            <hr>
+            <h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+<br>
+
+<div class="rows">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>quantity</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for order in orders  %}
+                {%for cart in order.products.all %}
+                <tr>
+                    <td>{{cart.product.name}}</td>
+                    <td>{{cart.product.category}}</td>
+                    <td>{{cart.quantity}}</td>
+                    <td><a class="btn btn-sm btn-warning" href="{% url 'update_order' cart.id %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id cart.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

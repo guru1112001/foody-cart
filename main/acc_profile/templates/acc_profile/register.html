@@ -1,0 +1,55 @@
+{% extends "acc_profile/base.html" %}
+
+
+{% block content %}
+<div class="can">
+
+    <div class="containers">
+        <div class="form-container sign-up-containers">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <h1 class="h1">Create Account</h1>
+                <div class="social-containers">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span class="span">or use your email for registration</span>
+                <div class="input">
+                        
+                    {{form.first_name}}
+                </div>
+
+                <div class="input">
+                    
+                    {{form.username}}
+                </div>
+                <div class="input">
+                    
+                    {{form.email}}
+                </div>
+                <div class="input">
+                    
+                    {{form.password1}}
+                </div>
+                <div class="input">
+                    
+                    {{form.password2}}
+                </div>
+                <button class="btn " type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <div class="overlay-containers">
+            <div class="overlays">
+                <div class="overlay-panels">
+                    <h1 class="h1">Welcome Back!</h1>
+                    <p class="p">To keep connected with us please login with your personal info</p>
+                    <button class="ghost buttonss" id="signIn"><a href="{% url 'login' %}">Sign in</a></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

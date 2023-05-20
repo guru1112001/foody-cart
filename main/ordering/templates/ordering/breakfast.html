@@ -1,0 +1,37 @@
+{% extends "acc_profile/base.html" %}
+{% load static %}
+{% block content %}
+<div class="product-container">
+  <div class="container">
+    <div class="row">
+      {% for product in products %}
+      {% if product.category == 'Breakfast' %}
+      <div class="col-sm-4">
+        <div class="product-card">
+          <div class="card-thumbnail">
+            <img class="img-responsive" src="{{product.ImageURL}}" />
+          </div>
+          <div class="card-content">
+            <div class="send">
+              <i class="fa fa-send fa-2x"></i>
+            </div>
+            <h1 class="card-title">{{product.name}}</h1>
+            
+            <p class="description">
+              {{product.description}}
+            </p>
+            <p>Price Rs {{product.price}}</p>
+            <ul class="list-inline post-meta">
+              <li class="card-comment">
+                <a class="btn btn-secondary" href="{% url 'Productdetail' product.id   %}"> View Product</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

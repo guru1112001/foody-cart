@@ -1,0 +1,123 @@
+{% extends "acc_profile/base.html" %}
+
+{% block content %}
+<div class="circle">
+  <section class="banner">
+    <div class="left">
+      <h1>Your favourite <span>Food</span> delivered & healthy collection</h1>
+      <div class="buttons">
+        <a class="btn btn-secondary" href="{% url 'menu' %}">View Menu</a>
+        <a class="btn btn-secondary" href="{% url 'menu' %}">Order Now</a>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare ligula et purus gravida, sed euismod
+        tortor pharetra. Cras vitae faucibus mauris. Ut velit nibh, vulputate sit amet ultrices eget.</p>
+    </div>
+    <div class="right visual">
+
+      <img src="static\home-banner.png" alt="" />
+
+      
+    </div>
+  </section>
+</div>
+<div class="section" id="how-it-works">
+  <h2 class="secondary">How It Works</h2>
+
+  <div class="container flex">
+    <div class="box">
+      <h3>Easy Order</h3>
+      <ion-icon name="timer-outline"></ion-icon>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
+        vero.
+      </p>
+    </div>
+
+    <div class="box active">
+      <h3>Best Quality</h3>
+      <ion-icon name="trophy-outline"></ion-icon>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
+        vero.
+      </p>
+    </div>
+
+    <div class="box">
+      <h3>Fast Delivery</h3>
+      <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
+        vero.
+      </p>
+    </div>
+  </div>
+</div>
+<!-- End How It Works -->
+
+<!-- About Restaurant -->
+<div class="section" id="about">
+  <div class="container flex">
+    <div class="visual">
+      <img src="static\about.png" alt="" />
+    </div>
+    <div class="text">
+      <h2 class="secondary">About Our Restaurant</h2>
+      <h2 class="primary">150+</h2>
+
+      <h3 class="tertiary">Our Delicious Food</h3>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ea
+        cumque consequuntur corrupti perferendis pariatur cupiditate,
+        suscipit provident! Dolor ducimus totam, ratione ipsam quod
+        reiciendis libero. Enim tempora eius eligendi.
+      </p>
+
+      <a href="#" class="btn">Explore Menu</a>
+    </div>
+  </div>
+</div>
+<!-- End About Restaurant -->
+<div class="section" id="faq">
+  <h2 class="secondary">Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <details>
+      <summary>I got the wrong food what should I do?</summary>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Necessitatibus corporis numquam esse!
+        </p>
+      </div>
+    </details>
+    <details>
+      <summary>I got the wrong food what should I do?</summary>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Necessitatibus corporis numquam esse!
+        </p>
+      </div>
+    </details>
+    <details>
+      <summary>I got the wrong food what should I do?</summary>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Necessitatibus corporis numquam esse!
+        </p>
+      </div>
+    </details>
+    <details>
+      <summary>I got the wrong food what should I do?</summary>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Necessitatibus corporis numquam esse!
+        </p>
+      </div>
+    </details>
+  </div>
+</div>
+{% endblock %}
