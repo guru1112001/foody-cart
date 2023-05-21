@@ -25,6 +25,7 @@ urlpatterns = [
     path("order-summary/",OrderSummaryView.as_view(),name="order-summary"),
     path('remove-item-cart/<int:pk>/',views.remove_single_from_cart, name='remove_single_from_cart'),
     path("checkout/",views.checkoutview,name="checkout"),
+    path("success/<int:id>/",views.success,name="success"),
 
 
 
