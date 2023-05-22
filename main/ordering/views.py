@@ -17,7 +17,8 @@ import datetime
 
 @user_only
 def homepage(request):
-    return render(request,"ordering/home.html")
+    return render(request, "ordering/home.html")
+
 
 @user_only
 def menu(request):
@@ -203,11 +204,11 @@ class OrderSummaryView(View):
 
 def checkoutview(request):
     unique_number = str(round(datetime.datetime.now().timestamp()))
-    slic=slice(6)
-    transaction_id=unique_number[slic]
+    slic = slice(6)
+    transaction_id = unique_number[slic]
     customer_obj = Customer.objects.get(user=request.user)
     order = order_info.objects.get(customer=customer_obj, complete=False)
-    
+
     form = checkoutform()
     if request.method == "POST":
         form = checkoutform(request.POST)
@@ -216,7 +217,7 @@ def checkoutview(request):
             obj = Address.objects.create(**clean_data)
             obj.customer = customer_obj
             obj.save()
-            # todo return redirect to payment view 
+            # todo return redirect to payment view
             order_items = order.products.all()
             order_items.update(complete=True)
             for item in order_items:
@@ -231,29 +232,28 @@ def checkoutview(request):
             messages.info(
                 request, "your order has been placed and your transaction id is"+str(transaction_id))
 
-        return redirect("success",id=order.id)
+        return redirect("success", id=order.id)
     return render(request, "ordering/checkout.html", {"form": form, "customer": customer_obj, "order": order})
 
-def success(request,id):
+
+def success(request, id):
 
     customer_obj = Customer.objects.get(user=request.user)
-    order = order_info.objects.get(customer=customer_obj,id=id )
-    address_obj=Address.objects.filter(customer=customer_obj).latest("id")
-    # products=productss
-    
-    
-    customer_email=customer_obj.email
-    customer_name=customer_obj.name
-   
-  
-    t_id=order.transaction_id
-    rollment_no=address_obj.Enrollment_no
-    sem=address_obj.Semester
-    course=address_obj.course
+    order = order_info.objects.get(customer=customer_obj, id=id)
+    address_obj = Address.objects.filter(customer=customer_obj).latest("id")
+    customer_email = customer_obj.email
+    customer_name = customer_obj.name
+
+    t_id = order.transaction_id
+    rollment_no = address_obj.Enrollment_no
+    sem = address_obj.Semester
+    course = address_obj.course
 
     # print(address_obj.id)
-    context={'customer_email':customer_email,'customer_name':customer_name,'t_id':t_id,'rollment_no':rollment_no,'sem':sem,'course':course}
-    return render(request,'ordering/success.html',context)
+    context = {'customer_email': customer_email, 'customer_name': customer_name,
+               't_id': t_id, 'rollment_no': rollment_no, 'sem': sem, 'course': course, 'order': order}
+    return render(request, 'ordering/success.html', context)
+
 
 @admin_only
 def Dashboard(request):

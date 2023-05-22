@@ -1,0 +1,172 @@
+{% extends "acc_profile/base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            font-size: 13px;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .logotype {
+            background: #000;
+            color: #fff;
+            width: 75px;
+            height: 75px;
+            line-height: 75px;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .column-title {
+            background: #eee;
+            text-transform: uppercase;
+            padding: 15px 5px 15px 15px;
+            font-size: 11px
+        }
+
+        .column-detail {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 2rem;
+        }
+
+        .column-header {
+            background: #eee;
+            text-transform: uppercase;
+            padding: 15px;
+            font-size: 11px;
+            border-right: 1px solid #eee;
+        }
+
+        .row {
+            padding: 7px 14px;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        .alert {
+            background: #ffd9e8;
+            padding: 20px;
+            margin: 20px 0;
+            line-height: 22px;
+            color: #333
+        }
+
+        .socialmedia {
+            background: #eee;
+            padding: 20px;
+            display: inline-block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <table width="100%">
+            <tr>
+                <td width="75px">
+                    <div class="logotype">Copmany</div>
+                </td>
+                <td width="300px"
+                    style="background: #fa6634;border-left:15px solid #fff; padding-left:30px;font-size:26px;font-weight:bold;letter-spacing:-1px;">
+                    Order confirmation</td>
+                <td></td>
+            </tr>
+        </table>
+        <h3>Your contact details</h3>
+        <table width="100%" style="border-collapse: collapse;">
+            <tr>
+                <td width="180px" class="column-title">Email
+                <td>
+                <td class="column-detail"> {{ customer_email }}
+                <td>
+            </tr>
+            <tr>
+                <td class="column-title">First & Last name
+                <td>
+                <td class="column-detail">{{customer_name}}
+                <td>
+            </tr>
+            <tr>
+                <td class="column-title">Enrollment number
+                <td>
+                <td class="column-detail">{{rollment_no}}
+                <td>
+            </tr>
+            <tr>
+                <td class="column-title">Course
+                <td>
+                <td class="column-detail">{{ course }}
+                <td>
+                </td>
+            <tr>
+                <td class="column-title">Semester
+                <td>
+                <td class="column-detail">{{sem}}
+                <td>
+            </tr>
+            <tr>
+                <td class="column-title">Transaction
+                <td>
+                <td class="column-detail">{{t_id}}
+                <td>
+            </tr>
+        </table>
+        <h3>Your Invoice</h3>
+
+        <table width="100%" style="border-collapse: collapse;border-bottom:1px solid #eee;">
+            <tr>
+                <td width="20%" class="column-header">#</td>
+                <td width="40%" class="column-header">Description</td>
+                <td width="30%" class="column-header">Price</td>
+                <td width="10%" class="column-header">Quantity</td>
+                <td width="10%" class="column-header">Total Item Price</td>
+            </tr>
+            {% for order_item in order.products.all %}
+            <tr>
+                <td class="row">{{forloop.counter}}</td>
+                <td class="row">{{order_item.product.name }}</td>
+                <td class="row">{{order_item.product.price}}</td>
+                <td class="row">{{order_item.quantity}}</td>
+                <td class="row">{{ order_item.get_total}}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="4"><b>Order Total</b></td>
+                <td><b>Rs{{ order.get_cart_total }}</b></td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <a class='btn btn-primary float-right' href=' {% url "home"%} '>Return to Home</a>
+                </td>
+            </tr>
+
+        </table>
+
+
+        <div class="alert">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum. </div>
+        <div class="socialmedia">Follow us online <small>[FB] [INSTA]</small></div>
+    </div><!-- container -->
+</body>
+
+</html>
+{% endblock %}
