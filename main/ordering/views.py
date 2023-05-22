@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import cart, order_info, Product, Address
 from acc_profile.models import Customer
@@ -13,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 
 
-# Create your views here.
+
 
 @user_only
 def homepage(request):
@@ -249,10 +251,22 @@ def success(request, id):
     sem = address_obj.Semester
     course = address_obj.course
 
-    # print(address_obj.id)
+
+   
     context = {'customer_email': customer_email, 'customer_name': customer_name,
                't_id': t_id, 'rollment_no': rollment_no, 'sem': sem, 'course': course, 'order': order}
+    template=render_to_string("ordering/email_template.html",context)
+    email=EmailMessage(
+       "Thank you for your purchase",
+       template,
+       settings.EMAIL_HOST_USER,
+       [customer_email],
+   )
+    email.fail_silently=False
+    email.content_subtype = 'html'
+    email.send()
     return render(request, 'ordering/success.html', context)
+
 
 
 @admin_only
